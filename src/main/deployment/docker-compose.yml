@@ -1,0 +1,52 @@
+version: "3.7"
+services:
+#  rabbit0:
+#    image: rabbitmq:3-management-alpine
+#    container_name: rabbitmq
+#    volumes:
+#      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+#      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+#      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+#    environment:
+#      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+#      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+#      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+#    ports:
+#      - "5671:5671"
+#  rabbit1:
+#    image: lucifer8591/rabbitmq-server:3.7.17
+#    hostname: rabbit1
+#    ports:
+#      - "5672:5672"
+#    environment:
+#      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-admin}
+#      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-admin}
+#  rabbit2:
+#    image: lucifer8591/rabbitmq-server:3.7.17
+#    hostname: rabbit2
+#    links:
+#      - rabbit1
+#    environment:
+#      - CLUSTERED=true
+#      - CLUSTER_WITH=rabbit1
+#      - RAM_NODE=true
+#    ports:
+#      - "5673:5672"
+#  rabbit3:
+#    image: lucifer8591/rabbitmq-server:3.7.17
+#    hostname: rabbit3
+#    links:
+#      - rabbit1
+#      - rabbit2
+#    environment:
+#      - CLUSTERED=true
+#      - CLUSTER_WITH=rabbit1
+#    ports:
+#      - "5674:5672"
+  rabbit4:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "secret cookie here"
+    ports:
+      - 5675:5672
+      - 15672:15672
